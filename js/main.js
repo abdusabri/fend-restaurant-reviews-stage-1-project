@@ -194,6 +194,20 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     function onClick() {
       window.location.href = marker.options.url;
     }
+    // Handle keypress event and let enter and space do a click action
+    marker.on("keypress", onKeyPress);
+    function onKeyPress(event) {
+      const key = event.originalEvent.keyCode;
+      switch (key) {
+        case 32:
+        case 13:
+          onClick();
+          break;
+      
+        default:
+          break;
+      }
+    }
     self.markers.push(marker);
   });
 
