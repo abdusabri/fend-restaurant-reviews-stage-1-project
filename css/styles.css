@@ -62,6 +62,7 @@ nav {
   text-align:center;
 }
 nav h1 {
+  padding-top: 25px;
   margin: auto;
 }
 nav h1 a {
