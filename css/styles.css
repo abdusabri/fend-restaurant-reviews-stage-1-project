@@ -117,6 +117,10 @@ nav h1 a {
   width: 100%;
   background-color: #ccc;
 }
+
+#map:focus {
+  outline: solid 3px #5b9dd9;
+}
 /* ====================== Restaurant Filtering ====================== */
 #sidePanel {
   width: 35%;
