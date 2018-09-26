@@ -210,7 +210,29 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     }
     self.markers.push(marker);
   });
-
+  /* 
+  ** The logical tab order in my opinion is the map itself, then
+  ** the main controls (zoom in/out in this case), and then the 
+  ** the markers on the map (restaurants), and finally the attribution.
+  ** The default tab behavior puts the markers before the controls.
+  ** one solution would be to set tabIndex attributes, but this is an
+  ** anti-pattern and would require tabIndex changing for almost
+  ** all the elements, which is bad and hard to maintain. So, it is
+  ** best to follow the correct DOM tree/order to make it right.
+  ** The following 2 lines of code, moves the top-left controls area
+  ** of the map - which contains the zoom in/out controls - ahead of
+  ** markers in the DOM tree, and keeps the rest of the order as default
+  ** (meaning that attribution text will be after the markers).
+  ** This solution achieves the attended behavior, however, I believe
+  ** it is not ideal, and a better approach could be to actually extend
+  ** or change code of the core Leaflet library, but this is beyond
+  ** the scope of this project. TODO: further research, and improve
+  ** the solution.
+  */
+  // Get the top-left controls element
+  const controls = document.querySelector('.leaflet-control-zoom').parentElement;
+  // Move it to be the first child of the map, before the markers
+  document.querySelector('#map').prepend(controls);
 } 
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
