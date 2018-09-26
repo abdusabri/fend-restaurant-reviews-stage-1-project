@@ -109,7 +109,7 @@ nav h1 a {
 }
 /* ====================== Map ====================== */
 #map-container {
-  width: 65%;
+  width: 60%;
 }
 
 #map {
@@ -123,7 +123,7 @@ nav h1 a {
 }
 /* ====================== Restaurant Filtering ====================== */
 #sidePanel {
-  width: 35%;
+  width: 40%;
 }
 
 .filter-options {
