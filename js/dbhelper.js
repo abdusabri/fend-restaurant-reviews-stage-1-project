@@ -162,7 +162,9 @@ class DBHelper {
       alt: restaurant.name,
       url: DBHelper.urlForRestaurant(restaurant)
       })
+      // The marker shouldn't be focusable since it can't be interacted with
       marker.addTo(newMap);
+      marker.getElement().tabIndex = -1;
     return marker;
   } 
   /* static mapMarkerForRestaurant(restaurant, map) {
