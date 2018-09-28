@@ -197,3 +197,19 @@ getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+//IIFE to register the servie worker
+(function () {
+  // Return if the browser doesn't support the service worker
+  if (!navigator.serviceWorker) {
+    console.log('Service worker is not supported');
+    return;
+  }
+
+  // Scope is used for extra clarity, defualt would have been fine in this case
+  navigator.serviceWorker.register('/service-worker.js', {scope: "/"}).then((reg) => {
+    console.log('Service worker registered with scope: ' + reg.scope);
+  }).catch((err) => {
+    console.log('Failed to register the service worker, error: ' + err);
+  });
+})();
